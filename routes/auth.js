@@ -5,15 +5,21 @@ const pool = require("../db/postgres");
 router.post("/login", async (req, res) => {
   const { correo, password } = req.body;
 
-  const result = await pool.query(
-    "SELECT * FROM usuarios WHERE correo=$1 AND password=$2",
-    [correo, password]
-  );
+  if(!correo || !password){
+    return res.status(400).send("Campos obligatorios");
+  }
 
-  if (result.rows.length > 0) {
+  try {
+    const user = await Usuario.findOne({ correo });
+
+    // 🔴 CLAVE
+    if(!user || user.password !== password){
+      return res.status(401).send("Credenciales incorrectas");
+    }
+
     res.send("Login correcto");
-  } else {
-    res.status(401).send("Datos incorrectos");
+  } catch (error) {
+    res.status(500).send("Error en login");
   }
 });
 

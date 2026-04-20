@@ -21,9 +21,12 @@ app.get("/crear-admin", async (req, res) => {
     correo: "admin@vet.com",
     password: "123456"
   });
-
   await usuario.save();
   res.send("Usuario creado");
+});
+app.get("/usuarios", async (req, res) => {
+  const usuarios = await Usuario.find();
+  res.json(usuarios);
 });
 
 const PORT = process.env.PORT || 3000;
