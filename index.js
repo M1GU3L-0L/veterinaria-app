@@ -6,6 +6,16 @@ require("./db/postgres");
 
 const Usuario = require("./models/Usuario");
 
+app.get("/usuarios", async (req, res) => {
+  try {
+    const usuarios = await Usuario.find();
+    res.json(usuarios);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error obteniendo usuarios");
+  }
+});
+
 const app = express();
 app.use(cors());
 app.use(express.json());
