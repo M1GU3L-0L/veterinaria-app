@@ -13,7 +13,12 @@ app.use(express.json());
 app.use("/auth", require("./routes/auth"));
 app.use("/ventas", require("./routes/ventas"));
 app.use(express.static("public"));
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/login.html");
+});
 
-app.listen(3000, () => {
-  console.log("Servidor corriendo en puerto 3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log("Servidor corriendo en puerto " + PORT);
 });
