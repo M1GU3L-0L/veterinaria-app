@@ -33,15 +33,27 @@ app.get("/usuarios", async (req, res) => {
 
 app.get("/crear-admin", async (req, res) => {
   try {
+    const existe = await Usuario.findOne({ correo: "admin@vet.com" });
+
+    if (existe) {
+      return res.send("Usuario ya existe");
+    }
+
     const usuario = new Usuario({
       correo: "admin@vet.com",
       password: "123456"
     });
+
     await usuario.save();
     res.send("Usuario creado");
   } catch (error) {
     res.status(500).send("Error");
   }
+});
+
+app.get("/borrar-usuarios", async (req, res) => {
+  await Usuario.deleteMany({ correo: "admin@vet.com" });
+  res.send("Usuarios eliminados");
 });
 
 const PORT = process.env.PORT || 3000;
