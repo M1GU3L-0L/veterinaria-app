@@ -1,0 +1,82 @@
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+}
+
+/* LOGIN */
+.login-body {
+background: linear-gradient(135deg, #4CAF50, #81C784);
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+
+.container {
+background: white;
+padding: 30px;
+border-radius: 10px;
+box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+text-align: center;
+}
+
+input {
+width: 90%;
+padding: 10px;
+margin: 10px 0;
+border: 1px solid #ccc;
+border-radius: 5px;
+}
+
+button {
+padding: 10px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+/* BOTONES */
+.btn-primary {
+background: #4CAF50;
+color: white;
+}
+
+.btn-primary:hover {
+background: #388E3C;
+}
+
+.btn-secondary {
+background: #2196F3;
+color: white;
+}
+
+.btn-danger {
+background: red;
+color: white;
+}
+
+/* MENU */
+.menu-body {
+background: #f4f4f4;
+text-align: center;
+margin-top: 100px;
+}
+
+/* VENTAS */
+.ventas-body {
+background: #f4f4f4;
+text-align: center;
+}
+
+.lista {
+list-style: none;
+padding: 0;
+}
+
+.lista li {
+background: white;
+margin: 10px;
+padding: 10px;
+border-radius: 5px;
+}

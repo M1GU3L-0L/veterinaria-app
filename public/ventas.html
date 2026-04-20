@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ventas</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="ventas-body">
+
+<h2>🐾 Registro de Ventas</h2>
+
+<div class="container">
+  <input id="producto" placeholder="Producto">
+  <input id="precio" type="number" min="1" placeholder="Precio">
+  <input id="cantidad" type="number" min="1" placeholder="Cantidad">
+  <input id="fecha" type="date">
+
+<button class="btn-primary" onclick="crear()">Guardar</button> <button class="btn-secondary" onclick="generarPDF()">PDF</button>
+
+</div>
+
+<h3>Ventas Registradas</h3>
+<ul id="lista" class="lista"></ul>
+
+<script src="js/ventas.js"></script>
+
+</body>
+</html>
