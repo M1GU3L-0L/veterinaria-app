@@ -26,10 +26,26 @@
       border-radius: 5px;
       border: 1px solid #ccc;
     }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
   </style>
 </head>
 
 <body class="ventas-body">
+
+<div class="topbar">
+  <span>🐾 Veterinaria</span>
+  <div>
+    <button class="btn-secondary" onclick="window.location.href='menu.html'">⬅ Menú</button>
+    <button class="btn-danger" onclick="cerrarSesion()">🚪 Cerrar Sesión</button>
+  </div>
+</div>
 
 <h2>🐾 Registro de Ventas</h2>
 
@@ -47,6 +63,13 @@
 <ul id="lista" class="lista"></ul>
 
 <script src="js/ventas.js"></script>
+<script>
+  function cerrarSesion() {
+    if (confirm("¿Deseas cerrar sesión?")) {
+      window.location.href = "login.html";
+    }
+  }
+</script>
 
 </body>
 </html>
