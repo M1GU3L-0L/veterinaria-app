@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <title>Ventas</title>
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .lista li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .lista li div {
+      display: flex;
+      gap: 6px;
+    }
+    .lista li button {
+      padding: 5px 10px;
+      font-size: 13px;
+    }
+    #form-editar input {
+      margin: 4px;
+      padding: 6px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  </style>
 </head>
 
 <body class="ventas-body">
@@ -17,8 +39,8 @@
   <input id="cantidad" type="number" min="1" placeholder="Cantidad">
   <input id="fecha" type="date">
 
-<button class="btn-primary" onclick="crear()">Guardar</button> <button class="btn-secondary" onclick="generarPDF()">PDF</button>
-
+  <button class="btn-primary" onclick="crear()">💾 Guardar</button>
+  <button class="btn-secondary" onclick="generarPDF()">📄 PDF</button>
 </div>
 
 <h3>Ventas Registradas</h3>
