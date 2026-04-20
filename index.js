@@ -16,6 +16,15 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/login.html");
 });
+app.get("/crear-admin", async (req, res) => {
+  const usuario = new Usuario({
+    correo: "admin@vet.com",
+    password: "123456"
+  });
+
+  await usuario.save();
+  res.send("Usuario creado");
+});
 
 const PORT = process.env.PORT || 3000;
 
