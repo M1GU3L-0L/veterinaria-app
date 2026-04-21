@@ -3,7 +3,7 @@ function crear(){
   const precio = Number(document.getElementById("precio").value);
   const cantidad = Number(document.getElementById("cantidad").value);
 
-  const MAX_PRECIO = 99999999;
+  const MAX_PRECIO = 1000000;
   const MAX_CANTIDAD = 1000;
 
   if(!producto){
