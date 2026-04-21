@@ -2,12 +2,13 @@ function crear(){
   const producto = document.getElementById("producto").value.trim();
   const precio = Number(document.getElementById("precio").value);
   const cantidad = Number(document.getElementById("cantidad").value);
+  const fecha = document.getElementById("fecha").value; // 👈 FALTABA
 
   const MAX_PRECIO = 1000000;
   const MAX_CANTIDAD = 1000;
 
-  if(!producto){
-    alert("Producto obligatorio");
+  if(!producto || !fecha){
+    alert("Todos los campos son obligatorios");
     return;
   }
 
@@ -26,7 +27,7 @@ function crear(){
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ producto, precio, cantidad })
+    body: JSON.stringify({ producto, precio, cantidad, fecha }) // 👈 AQUÍ
   })
   .then(() => cargar());
 }
