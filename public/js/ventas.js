@@ -1,16 +1,34 @@
-function crear() {
-  const data = {
-    producto: document.getElementById("producto").value,
-    precio: Number(document.getElementById("precio").value),
-    cantidad: Number(document.getElementById("cantidad").value),
-    fecha: document.getElementById("fecha").value
-  };
+function crear(){
+  const producto = document.getElementById("producto").value.trim();
+  const precio = Number(document.getElementById("precio").value);
+  const cantidad = Number(document.getElementById("cantidad").value);
+
+  const MAX_PRECIO = 99999999;
+  const MAX_CANTIDAD = 1000;
+
+  if(!producto){
+    alert("Producto obligatorio");
+    return;
+  }
+
+  if(precio <= 0 || precio > MAX_PRECIO){
+    alert("El precio no puede ser mayor a " + MAX_PRECIO);
+    return;
+  }
+
+  if(cantidad <= 0 || cantidad > MAX_CANTIDAD){
+    alert("La cantidad no puede ser mayor a " + MAX_CANTIDAD);
+    return;
+  }
 
   fetch("/ventas", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
-  }).then(() => cargar());
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ producto, precio, cantidad })
+  })
+  .then(() => cargar());
 }
 
 function cargar() {
@@ -88,4 +106,16 @@ function generarPDF() {
 
 document.addEventListener("DOMContentLoaded", () => {
   cargar();
+});
+
+document.getElementById("precio").addEventListener("input", function() {
+  if (this.value > 1000000) {
+    this.value = 1000000;
+  }
+});
+
+document.getElementById("cantidad").addEventListener("input", function() {
+  if (this.value > 1000) {
+    this.value = 1000;
+  }
 });

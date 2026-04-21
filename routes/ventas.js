@@ -10,8 +10,19 @@ router.post("/", async (req, res) => {
     return res.status(400).send("Campos incompletos");
   }
 
+  const MAX_PRECIO = 1000000;
+  const MAX_CANTIDAD = 1000;
+
   if(precio <= 0 || cantidad <= 0){
     return res.status(400).send("Valores inválidos");
+  }
+
+  if(precio > MAX_PRECIO){
+    return res.status(400).send("El precio supera el máximo permitido");
+  }
+
+  if(cantidad > MAX_CANTIDAD){
+    return res.status(400).send("La cantidad supera el máximo permitido");
   }
 
   try {
